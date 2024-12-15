@@ -97,12 +97,12 @@ h1 {
 ```
 
 
-## SERVER SIDE PROCESSING:
+## HOMEPAGE:
 ![image](https://github.com/user-attachments/assets/1eb173be-2846-430f-a127-e3f5b37600a3)
 
 
-## HOMEPAGE:
 
+## SERVER SIDE PROCESSING:
 ![Screenshot (40)](https://github.com/user-attachments/assets/d4e5442a-0e4e-4f6b-8785-869231ebdb2a)
 
 ## RESULT:
