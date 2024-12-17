@@ -95,15 +95,66 @@ h1 {
 </html>
 
 ```
+urls.py
+```
+from django.contrib import admin
+from django.urls import path
+from . import views  # Ensure views is imported correctly
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('Power/', views.Power, name="Power"),
+    path('mathapp', views.Power, name="home"), 
+]
+
+```
+views.py
+```
+from django.shortcuts import render
+
+def Power(request):
+    context = {}
+    context['Power'] = "0"
+    context['I'] = "0"
+    context['R'] = "0"
+
+    if request.method == 'POST':
+        print("POST method is used")
+        I = request.POST.get('Intensity', '0')
+        R = request.POST.get('Resistance', '0')
+        print('request =', request)
+        print('Intensity =', I)
+        print('Resistance =', R)
+
+        try:
+            # Convert I and R to integers and calculate Power
+            I = int(I)
+            R = int(R)
+            Power = (I * I) * R
+            context['Power'] = Power
+        except ValueError:
+            # Handle invalid input gracefully
+            context['Power'] = "Invalid Input"
+            print("Error: Non-integer values submitted!")
+
+        context['I'] = I
+        context['R'] = R
+        print('Power =', context['Power'])
+
+    return render(request, 'mathapp/maths.html', context)
+
+```
 
 
 ## HOMEPAGE:
-![image](https://github.com/user-attachments/assets/1eb173be-2846-430f-a127-e3f5b37600a3)
+![image](https://github.com/user-attachments/assets/0b1a34b5-2e0c-496d-81d5-e0d4cf433051)
+
 
 
 
 ## SERVER SIDE PROCESSING:
-![Screenshot (40)](https://github.com/user-attachments/assets/d4e5442a-0e4e-4f6b-8785-869231ebdb2a)
+![image](https://github.com/user-attachments/assets/96384adf-3183-41eb-b871-68869c7d92c6)
+
 
 ## RESULT:
 The program for performing server side processing is completed successfully.
